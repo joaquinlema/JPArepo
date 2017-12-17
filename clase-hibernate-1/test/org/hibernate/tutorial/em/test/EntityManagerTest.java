@@ -29,6 +29,7 @@ import org.hibernate.tutorial.em.ejemplos.Peon;
 import org.hibernate.tutorial.em.ejemplos.Persona;
 import org.hibernate.tutorial.em.ejemplos.Presidente;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -140,6 +141,49 @@ public class EntityManagerTest {
 	
 	}
 
+	@Test
+	public void testTypedQuery(){
+		EntityManager em = entityManagerFactory.createEntityManager();
+		em.getTransaction().begin();
+				
+		TypedQuery<A> q = em.createQuery("SELECT a FROM A a WHERE a.a1 = 'joaquinCap22'",A.class);
+		A result = q.getSingleResult();
+		System.out.println(result.getA1());
+		
+		em.close();
+	}
+	
+	@Test
+	public void testTypedQuery2(){
+		EntityManager em = entityManagerFactory.createEntityManager();
+		em.getTransaction().begin();
+				
+		TypedQuery<A> q = em.createQuery("SELECT a FROM A a WHERE a.a1 = 'test'",A.class);
+		List<A> result = q.getResultList();
+		System.out.println(result.size());
+		
+		em.close();
+	}
+	
+	@Test
+	public void testRemoveTypedQuery2(){
+		EntityManager em = entityManagerFactory.createEntityManager();
+		em.getTransaction().begin();
+				
+		TypedQuery<A> q = em.createQuery("SELECT a FROM A a",A.class);
+		List<A> result = q.getResultList();
+		System.out.println(result.size());
+		
+		for (A a : result) {
+			if (a.getA1().equals("test")) {
+				em.remove(a);
+			}
+		}
+		
+		em.getTransaction().commit();
+		em.close();
+	}
+	
 	@Test
 	public void testOnetoOneUnidireccional(){
 		EntityManager manager = entityManagerFactory.createEntityManager();
