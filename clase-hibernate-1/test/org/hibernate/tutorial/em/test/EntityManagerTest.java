@@ -29,7 +29,6 @@ import org.hibernate.tutorial.em.ejemplos.Peon;
 import org.hibernate.tutorial.em.ejemplos.Persona;
 import org.hibernate.tutorial.em.ejemplos.Presidente;
 import org.junit.AfterClass;
-import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
