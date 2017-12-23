@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 
 import beans.Post;
 
-public class PostDao implements DaoInterface<Post, String> {
+public class PostDao implements Dao<Post, String> {
 	
 	private EntityManager manager;
 	
