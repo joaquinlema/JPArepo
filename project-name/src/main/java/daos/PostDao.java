@@ -17,6 +17,7 @@ public class PostDao implements Dao<Post, String> {
 	
 	public void persist(Post entity) {
 		manager = getEntityManager();
+		manager.getTransaction().begin();
 		manager.persist(entity);
 		manager.getTransaction().commit();
 		manager.close();

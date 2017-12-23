@@ -6,16 +6,10 @@ import javax.persistence.Persistence;
 
 public class EntityManagers {
 	
-	private static EntityManagerFactory factory;
+	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("VaadinPersist");
 	
 	private EntityManagers()
 	{			
-		try {
-			setUp();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	public void setUp() throws Exception {
